@@ -1,10 +1,10 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {getCountryByName} from "../../api/apiService";
-import ISearchWithHintProps from "./SearchWithHints.types";
+import {ISearchWithHintProps, ISearchResultProps} from "./SearchWithHints.types";
 import './SearchWithHints.css';
 
 export const SearchWithHints: React.FC<ISearchWithHintProps> = ({maxHints}) => {
-    const [searchResult, setSearchResult] = useState<any>([])
+    const [searchResult, setSearchResult] = useState<ISearchResultProps[]>([])
     const [searchText, setSearchText] = useState<string>('')
 
     useEffect(() => {
@@ -32,7 +32,7 @@ export const SearchWithHints: React.FC<ISearchWithHintProps> = ({maxHints}) => {
             <input className={'searchInput'} type="text" value={searchText} onChange={searchHandler} />
             <div className={'search__result'}>
                 {
-                    searchResult && searchResult.map((item: any) =>
+                    searchResult && searchResult.map((item: ISearchResultProps) =>
                         <div
                             className={'result'}
                             key={item.flag}

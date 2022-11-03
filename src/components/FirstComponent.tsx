@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {RightLeftButtons} from "./RightLeftButtons";
 import IButtonProps from "./Button/Button.types";
+import './FirstComponent.css';
 
 const FirstComponent = () => {
     const [firstControlText, setFirstControlText] = useState<string>('First example')
@@ -50,7 +51,10 @@ const FirstComponent = () => {
     }
 
     return (
-        <div className="App">
+        <div className="buttonsGroup">
+            <span>Текстовый контрол, который позволяет настраивать и выводить разное кол-во кнопок слева и справа от
+                самого контрола. Для кнопок должна быть возможность настроить `текст` и `колбек функцию`,
+                которая вызывается при нажатии на кнопку.</span>
             <div>
                 <RightLeftButtons
                     text={firstControlText}

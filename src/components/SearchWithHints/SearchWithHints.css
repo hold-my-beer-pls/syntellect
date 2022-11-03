@@ -1,0 +1,39 @@
+.search {
+    margin: 12px;
+}
+
+.searchInput {
+    width: 500px;
+}
+
+.result {
+    border-color: #181818;
+    border-width: 0 2px 2px 2px;
+    border-style: solid;
+    display: flex;
+    justify-content: space-between;
+}
+
+.result:hover {
+    border-color: #ffcf2a;
+    border-width: 0 2px 2px 2px;
+    border-style: solid;
+    cursor: pointer;
+}
+
+.resultText {
+    margin: 4px;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+}
+
+.resultText__fullname {
+    font-size: 12px;
+}
+
+.result__img {
+    margin: 2px;
+}
+
+

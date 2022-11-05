@@ -3,15 +3,34 @@ import {RightLeftButtons} from "./RightLeftButtons";
 import IButtonProps from "./Button/Button.types";
 import './FirstComponent.css';
 
+/**
+ * Два компонента с кнопками
+ * @constructor
+ */
 const FirstComponent = () => {
     const [firstControlText, setFirstControlText] = useState<string>('First example')
     const [secondControlText, setSecondControlText] = useState<string>('Second example')
 
+    const updateFirstTextHandler = (text: string) => {
+        setFirstControlText(text)
+    }
+
+    const updateSecondTextHandler = (text: string) => {
+        setSecondControlText(text)
+    }
     const clearTextHandler = () => {
         setFirstControlText('')
     }
     const setNewTextHandler = () => {
         setFirstControlText('hello world')
+    }
+    const showAlertHandler = () => {
+        alert(secondControlText)
+    }
+    const checkNumberHandler = () => {
+        if (!!Number(secondControlText)) {
+            alert(secondControlText)
+        }
     }
     const rightButtonsFirst: IButtonProps[] = [
         {
@@ -23,14 +42,6 @@ const FirstComponent = () => {
             onClick: setNewTextHandler
         }]
 
-    const showAlertHandler = () => {
-        alert(secondControlText)
-    }
-    const checkNumberHandler = () => {
-        if (!isNaN(Number(secondControlText))) {
-            alert(secondControlText)
-        }
-    }
     const leftButtonsSecond: IButtonProps[] = [
         {
             text: 'l1',
@@ -42,19 +53,8 @@ const FirstComponent = () => {
             onClick: checkNumberHandler
         }]
 
-    const updateFirstTextHandler = (text: string) => {
-        setFirstControlText(text)
-    }
-
-    const updateSecondTextHandler = (text: string) => {
-        setSecondControlText(text)
-    }
-
     return (
         <div className="buttonsGroup">
-            <span>Текстовый контрол, который позволяет настраивать и выводить разное кол-во кнопок слева и справа от
-                самого контрола. Для кнопок должна быть возможность настроить `текст` и `колбек функцию`,
-                которая вызывается при нажатии на кнопку.</span>
             <div>
                 <RightLeftButtons
                     text={firstControlText}

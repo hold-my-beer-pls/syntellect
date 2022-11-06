@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
+import {observer} from "mobx-react";
 import IRightLeftButtonsProps from "./RightLeftButtons.types";
 import "./RightLeftButtons.css"
 import {Button} from "../Button";
 import IButtonProps from "../Button/Button.types";
+import {inputControlStore} from "../../stores";
 
 /**
  * Текстовый импут с кнопками по бокам
@@ -12,10 +14,13 @@ import IButtonProps from "../Button/Button.types";
  * @param leftButtons набор кнопок слева
  * @constructor
  */
-export const RightLeftButtons: React.FC<IRightLeftButtonsProps> = ({text,onUpdateText , rightButtons, leftButtons}) => {
+export const RightLeftButtons: React.FC<IRightLeftButtonsProps> = observer(({leftButtons, rightButtons, controlName}) => {
+    useEffect(() => {
+        inputControlStore.setText(controlName, controlName)
+    }, [])
 
     const changeTextHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onUpdateText(e.target.value)
+        inputControlStore.setText(e.target.value, controlName)
     }
 
     return(
@@ -25,7 +30,7 @@ export const RightLeftButtons: React.FC<IRightLeftButtonsProps> = ({text,onUpdat
                     <Button key={Math.random().toString()} text={item.text} onClick={item.onClick} />
                 )
             }
-            <input type="text" value={text} onChange={changeTextHandler}/>
+            <input type="text" value={inputControlStore.text[controlName] || ''} onChange={changeTextHandler}/>
             {
                 rightButtons?.map((item: IButtonProps) =>
                     <Button key={Math.random().toString()} text={item.text} onClick={item.onClick} />
@@ -33,4 +38,4 @@ export const RightLeftButtons: React.FC<IRightLeftButtonsProps> = ({text,onUpdat
             }
         </>
     )
-}
+})

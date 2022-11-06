@@ -21,7 +21,7 @@ export const SearchWithHints: React.FC<ISearchWithHintProps> = ({maxHints}) => {
             void searchCountry()
         }, 300)
         return () => clearTimeout(debounce)
-    }, [searchText])
+    }, [searchText, maxHints])
 
     const itemClickHandler = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
         setSearchText(e.currentTarget.getElementsByClassName('resultText__name')[0].innerHTML)
@@ -36,7 +36,7 @@ export const SearchWithHints: React.FC<ISearchWithHintProps> = ({maxHints}) => {
             <input className={'searchInput'} type="text" value={searchText} onChange={searchHandler} />
             <div className={'search__result'}>
                 {
-                    searchResult && searchResult.map((item: ISearchResultProps) =>
+                    searchResult?.map((item: ISearchResultProps) =>
                         <div
                             className={'result'}
                             key={item.flag}

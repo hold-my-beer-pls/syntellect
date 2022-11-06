@@ -1,35 +1,28 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {RightLeftButtons} from "./RightLeftButtons";
 import IButtonProps from "./Button/Button.types";
 import './FirstComponent.css';
+import {inputControlStore} from "../stores";
 
+const firstControlName = 'firstControl'
+const secondControlName = 'secondControl'
 /**
  * Два компонента с кнопками
  * @constructor
  */
 const FirstComponent = () => {
-    const [firstControlText, setFirstControlText] = useState<string>('First example')
-    const [secondControlText, setSecondControlText] = useState<string>('Second example')
-
-    const updateFirstTextHandler = (text: string) => {
-        setFirstControlText(text)
-    }
-
-    const updateSecondTextHandler = (text: string) => {
-        setSecondControlText(text)
-    }
     const clearTextHandler = () => {
-        setFirstControlText('')
+        inputControlStore.setText('', firstControlName)
     }
     const setNewTextHandler = () => {
-        setFirstControlText('hello world')
+        inputControlStore.setText('hello world', firstControlName)
     }
     const showAlertHandler = () => {
-        alert(secondControlText)
+        alert(inputControlStore.text[secondControlName])
     }
     const checkNumberHandler = () => {
-        if (!!Number(secondControlText)) {
-            alert(secondControlText)
+        if (!!Number(inputControlStore.text[secondControlName])) {
+            alert(inputControlStore.text[secondControlName])
         }
     }
     const rightButtonsFirst: IButtonProps[] = [
@@ -41,7 +34,6 @@ const FirstComponent = () => {
             text: 'r2',
             onClick: setNewTextHandler
         }]
-
     const leftButtonsSecond: IButtonProps[] = [
         {
             text: 'l1',
@@ -57,14 +49,12 @@ const FirstComponent = () => {
         <div className="buttonsGroup">
             <div>
                 <RightLeftButtons
-                    text={firstControlText}
-                    onUpdateText={(text: string) => updateFirstTextHandler(text)}
+                    controlName={firstControlName}
                     rightButtons={rightButtonsFirst} />
             </div>
             <div>
                 <RightLeftButtons
-                    text={secondControlText}
-                    onUpdateText={(text: string) => updateSecondTextHandler(text)}
+                    controlName={secondControlName}
                     rightButtons={rightButtonsSecond}
                     leftButtons={leftButtonsSecond}/>
             </div>

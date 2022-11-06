@@ -12,7 +12,7 @@ import IButtonProps from "../Button/Button.types";
  * @param leftButtons набор кнопок слева
  * @constructor
  */
-export const RightLeftButtons: React.FC<IRightLeftButtonsProps> = ({text,onUpdateText , rightButtons, leftButtons}) => {
+export const RightLeftButtons: React.FC<IRightLeftButtonsProps> = ({text, onUpdateText, rightButtons, leftButtons}) => {
 
     const changeTextHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         onUpdateText(e.target.value)

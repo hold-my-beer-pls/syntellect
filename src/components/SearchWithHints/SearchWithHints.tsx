@@ -33,7 +33,7 @@ export const SearchWithHints: React.FC<ISearchWithHintProps> = ({maxHints}) => {
 
     return(
         <div className={'search'}>
-            <input className={'searchInput'} type="text" value={searchText} onChange={searchHandler} />
+            <input className={'search__input'} type="text" value={searchText} onChange={searchHandler} />
             <div className={'search__result'}>
                 {
                     searchResult && searchResult.map((item: ISearchResultProps) =>

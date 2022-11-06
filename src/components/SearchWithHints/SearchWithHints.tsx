@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {getCountryByName} from "../../api/apiService";
 import {ISearchWithHintProps, ISearchResultProps} from "./SearchWithHints.types";
-import './SearchWithHints.css';
+import './SearchWithHints.less';
 
 /**
  * Компонент поиска с подсказками
@@ -33,7 +33,7 @@ export const SearchWithHints: React.FC<ISearchWithHintProps> = ({maxHints}) => {
 
     return(
         <div className={'search'}>
-            <input className={'searchInput'} type="text" value={searchText} onChange={searchHandler} />
+            <input className={'search__input'} type="text" value={searchText} onChange={searchHandler} />
             <div className={'search__result'}>
                 {
                     searchResult && searchResult.map((item: ISearchResultProps) =>

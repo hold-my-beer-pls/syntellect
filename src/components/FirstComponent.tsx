@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {RightLeftButtons} from "./RightLeftButtons";
 import IButtonProps from "./Button/Button.types";
-import './FirstComponent.css';
+import './FirstComponent.less';
 
 /**
  * Два компонента с кнопками

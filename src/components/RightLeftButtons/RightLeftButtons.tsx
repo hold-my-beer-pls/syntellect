@@ -1,6 +1,6 @@
 import React from "react";
 import IRightLeftButtonsProps from "./RightLeftButtons.types";
-import "./RightLeftButtons.css"
+import "./RightLeftButtons.less"
 import {Button} from "../Button";
 import IButtonProps from "../Button/Button.types";
 

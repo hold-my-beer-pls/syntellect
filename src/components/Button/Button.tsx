@@ -1,6 +1,6 @@
 import React from "react";
 import IButtonProps from "./Button.types";
-import "./Button.css"
+import "./Button.less"
 
 /**
  * Кнопка с текстом

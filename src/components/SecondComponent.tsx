@@ -1,6 +1,6 @@
 import React from "react";
 import {SearchWithHints} from "./SearchWithHints/";
-import './SecondComponent.css';
+import './SecondComponent.less';
 
 /**
  * Два поиска
